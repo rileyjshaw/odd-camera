@@ -249,8 +249,8 @@ export default {
 					updateActiveCellsUniforms(canvas.width, canvas.height, pixelSize);
 					if (isPendingPositionReinit) {
 						isPendingPositionReinit = false;
-						proposalShader.resetFrame();
-						acceptShader.resetFrame();
+						proposalShader.rewind();
+						acceptShader.rewind();
 						positionShader.reset();
 						positionShader.step();
 						positionShader.step();
