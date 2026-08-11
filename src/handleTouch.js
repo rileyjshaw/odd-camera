@@ -40,7 +40,7 @@ export default function handleTouch(
 	}
 
 	function handleTouchMove(e) {
-		if (latestTouch.id === null) return;
+		if (!latestTouch) return;
 
 		const touch = Array.from(e.changedTouches).find(touch => touch.identifier === latestTouch.id);
 		if (!touch) return;
@@ -76,6 +76,8 @@ export default function handleTouch(
 	}
 
 	function handleTouchEnd(e) {
+		if (!latestTouch) return;
+
 		Array.from(e.changedTouches).forEach(touch => {
 			delete prevTouchCoordinates[touch.identifier];
 			if (isCurrentTapInvalid || !onTap || touch.identifier !== latestTouch.id) return;
